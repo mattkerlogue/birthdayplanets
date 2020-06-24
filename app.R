@@ -10,7 +10,7 @@
 library(shiny)
 library(tidyverse)
 
-planet_data <- readr::read_csv("planet_data.csv") %>%
+planet_data <- readr::read_csv("https://raw.githubusercontent.com/mattkerlogue/birthdayplanets/master/planet_data.csv") %>%
   filter(planet != "Moon") %>%
   mutate(au = distance_from_sun / planet_data[planet_data$planet == "Earth", "distance_from_sun"][[1]],
          radius = diameter / 2,

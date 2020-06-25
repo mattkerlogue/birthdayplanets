@@ -28,4 +28,11 @@ planet_data <- xml2::read_html(url) %>%
   mutate_at(vars(-planet, -ring_system, -global_magnetic_field), 
             ~as.numeric(str_remove_all(., "\\*|\\,")))
 
-write_excel_csv(planet_data, "planet_data.csv")
+planet_data_2 <- planet_data %>%
+filter(planet != "Moon") %>%
+  mutate(au = distance_from_sun / planet_data[planet_data$planet == "Earth", "distance_from_sun"][[1]],
+         radius = diameter / 2,
+         orbit_in_hours = orbital_period * 24)
+
+write_excel_csv(planet_data, "data/planet_data.csv")
+write_rds(planet_data_2, "data/planet_data.RDS")

@@ -97,7 +97,7 @@ next_planet_birthday <- function(birthday, planet_data, what) {
 }
 
 # Define UI for application that draws a histogram
-ui <- navbarPage("Birthday Planets", tabPanel(
+ui <- navbarPage("Interplanetary Birthday Express", tabPanel(
     emo::ji("alien"),
     fixedRow(column(
       12,
